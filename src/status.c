@@ -82,3 +82,17 @@ ZMK_SUBSCRIPTION(cygnus_status, zmk_keycode_state_changed);
 #if IS_ENABLED(CONFIG_ZMK_SPLIT_BLE_CENTRAL_BATTERY_LEVEL_FETCHING)
 ZMK_SUBSCRIPTION(cygnus_status, zmk_peripheral_battery_state_changed);
 #endif
+
+/* Host sends a report starting with REPORT_ID to get the current status right away. */
+static int request_listener(const zmk_event_t *eh) {
+    const struct raw_hid_received_event *ev = as_raw_hid_received_event(eh);
+
+    if (ev && ev->length > 0 && ev->data[0] == REPORT_ID) {
+        memset(last_report, 0, REPORT_LEN);
+        k_work_submit(&send_work);
+    }
+    return ZMK_EV_EVENT_BUBBLE;
+}
+
+ZMK_LISTENER(cygnus_status_request, request_listener);
+ZMK_SUBSCRIPTION(cygnus_status_request, raw_hid_received_event);
