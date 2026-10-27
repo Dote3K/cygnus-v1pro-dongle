@@ -4,7 +4,9 @@
 #include <zephyr/logging/log.h>
 
 #include <zmk/event_manager.h>
+#include <zmk/events/keycode_state_changed.h>
 #include <zmk/events/layer_state_changed.h>
+#include <zmk/hid.h>
 #include <zmk/keymap.h>
 
 #include <raw_hid/events.h>
@@ -39,6 +41,7 @@ static void build_report(uint8_t *report) {
 
     zmk_keymap_layer_index_t index = zmk_keymap_highest_layer_active();
     report[OFF_LAYER] = index;
+    report[OFF_MODS] = zmk_hid_get_explicit_mods();
 
     const char *name = zmk_keymap_layer_name(zmk_keymap_layer_index_to_id(index));
     if (name) {
@@ -67,3 +70,4 @@ static int status_listener(const zmk_event_t *eh) {
 
 ZMK_LISTENER(cygnus_status, status_listener);
 ZMK_SUBSCRIPTION(cygnus_status, zmk_layer_state_changed);
+ZMK_SUBSCRIPTION(cygnus_status, zmk_keycode_state_changed);
