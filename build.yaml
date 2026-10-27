@@ -6,7 +6,7 @@ include:
     shield: cygnus_right
     artifact-name: cygnus_right
   - board: nice_nano//zmk
-    shield: cygnus_dongle
+    shield: cygnus_dongle raw_hid_adapter
     artifact-name: cygnus_dongle
   - board: nice_nano//zmk
     shield: settings_reset
