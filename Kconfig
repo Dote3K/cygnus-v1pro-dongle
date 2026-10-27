@@ -1,0 +1,4 @@
+config CYGNUS_STATUS
+    bool "Send keyboard status to the host over raw HID"
+    default y
+    depends on RAW_HID
