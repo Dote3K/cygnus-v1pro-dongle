@@ -1,0 +1,38 @@
+if SHIELD_CYGNUS_LEFT || SHIELD_CYGNUS_RIGHT || SHIELD_CYGNUS_DONGLE
+
+config ZMK_SPLIT
+    default y
+
+endif
+
+if SHIELD_CYGNUS_LEFT || SHIELD_CYGNUS_RIGHT
+
+config ZMK_SPLIT_ROLE_CENTRAL
+    default n
+
+config BT_MAX_CONN
+    default 1
+
+config BT_MAX_PAIRED
+    default 1
+
+endif
+
+if SHIELD_CYGNUS_DONGLE
+
+config ZMK_KEYBOARD_NAME
+    default "Cygnus"
+
+config ZMK_SPLIT_ROLE_CENTRAL
+    default y
+
+config ZMK_SPLIT_BLE_CENTRAL_PERIPHERALS
+    default 2
+
+config BT_MAX_CONN
+    default 7
+
+config BT_MAX_PAIRED
+    default 7
+
+endif

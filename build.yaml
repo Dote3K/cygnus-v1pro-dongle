@@ -1,0 +1,13 @@
+include:
+  - board: nice_nano//zmk
+    shield: cygnus_left
+    artifact-name: cygnus_left
+  - board: nice_nano//zmk
+    shield: cygnus_right
+    artifact-name: cygnus_right
+  - board: nice_nano//zmk
+    shield: cygnus_dongle
+    artifact-name: cygnus_dongle
+  - board: nice_nano//zmk
+    shield: settings_reset
+    artifact-name: settings_reset

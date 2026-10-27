@@ -1,0 +1,10 @@
+// use Corne physical layout (bc i'm lazy) 
+#include <layouts/foostan/corne/6column.dtsi>
+
+/ {
+    default_layout: foostan_corne_6col_layout {
+        display-name = "Cygnus";
+        transform = <&default_transform>;
+        kscan = <&kscan>;
+    };
+};

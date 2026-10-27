@@ -1,0 +1,5 @@
+#include "cygnus-matrix.dtsi"
+
+&default_transform {
+    col-offset = <6>;
+};

@@ -1,0 +1,10 @@
+#include "cygnus.dtsi"
+
+/ {
+    kscan: kscan {
+        compatible = "zmk,kscan-mock";
+        rows = <0>;
+        columns = <0>;
+        events = <0>;
+    };
+};
